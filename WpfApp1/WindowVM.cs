@@ -16,35 +16,42 @@ namespace WpfApp1
 
         Dictionary<Key, bool> keyDown= new Dictionary<Key, bool>();
 
+
+        //**********************************************************************************************\\
+        //                                        Initialization                                        \\
+        //______________________________________________________________________________________________\\
         public WindowVM()
         {
-            //setup sound here
+            //setup sound here UPDATE
 
-            //Initialize spaceman and enemy locations here
+            //GAMEOBJECT INITIALIZATION
             MajorToms = new ObservableCollection<MajorTomVMB>();
-            //For random placement of major tom
+            
+            //PLACEMENT
             var rand = new Random();
             MajorToms.Add(new MajorTomVMB(200, 200));
 
-            //moveLeft = new testCommand(O => MajorToms[0].MoveLeft());
+            //COMMANDS
             jump = new testCommand(O => MajorToms[0].Jump());
 
-            //Dictionary Player Movements Initialization
+            //UTILITY INITIALIZATION
             foreach (var key in Enum.GetValues(typeof(Key)))
             {
                 keyDown[(Key)key] = false;
             }
 
-            //start thread
+            //START THREAD
             var thread = new Thread(UpdateThread)
             {
                 IsBackground = true
             };
 
             thread.Start();
-
-            
         }
+
+        //**********************************************************************************************\\
+        //                                   KEYPRESS DETECTION                                         \\
+        //______________________________________________________________________________________________\\
 
         public void KeyDown(Key k)
         {
@@ -54,33 +61,46 @@ namespace WpfApp1
         public void KeyUp(Key k)
         {
             keyDown[k] = false;
+            MajorToms[0].IsRunning = false;
         }
+
+        //**********************************************************************************************\\
+        //                                        GAME LOOP                                             \\
+        //______________________________________________________________________________________________\\
 
         private void UpdateThread()
         {
             while (true)
             {
-                for (int i = 0; i < MajorToms.Count; i++)
-                {
-                    //For Major Tom movement
-                    var Tom = MajorToms[i];
+                    //GET INPUTS
+                    var Tom = MajorToms[0];
 
-                    //USER MOVEMENT
                     if (keyDown[Key.A])
                     {
-                        MajorToms[0].MoveLeft();
+                        Tom.MoveLeft();
                     }
                     if (keyDown[Key.Space])
                     {
-                        MajorToms[0].Jump();
+                        Tom.Jump();
                     }
                     if(keyDown[Key.D])
                     {
-                        MajorToms[0].MoveRight();
+                        Tom.MoveRight();
                     }
-                    
 
-                    //If tom is not grounded and won't collide with ground this tick
+
+                    //_______________________________________________________
+                    //                      UPDATE                          -
+                    //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+                    //IF TOM IS NOT GOING TO COLLIDE WITH ANYTHING VERTICALLY
+                    //      INCREASE VERTICAL VELOCITY
+                    //IF NOT GOING TO COLLIDE WITH ANYTHING HORIZONTALLY
+                    //      DECREASE HORIZONTAL VELOCITY
+                    //ELSE IF
+                    //      GOING TO COLLIDE VERTICAL verticalVelocity = 0
+                    //ELSE IF
+                    //      GOING TO COLLIDE HORIZONTALLY horizontalVelocity = 0
                     if (Tom.Y + Tom.verticalVelocity + 3 <= 400 && Tom.Y < 397)
                     {
                         Tom.verticalVelocity += .008;
@@ -93,11 +113,15 @@ namespace WpfApp1
 
                     //Move Tom
                     Tom.Y = Tom.Y + Tom.verticalVelocity;
-                }
+                    Tom.X = Tom.X + Tom.horizontalVelocity;
                 Thread.Sleep(1);
             }
         }
 
+
+        //**********************************************************************************************\\
+        //                                    not sure but necessary                                    \\
+        //______________________________________________________________________________________________\\
         public ObservableCollection<MajorTomVMB> MajorToms { get; set; }
         public testCommand jump { get; }
     }

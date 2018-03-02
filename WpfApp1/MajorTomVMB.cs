@@ -15,19 +15,24 @@ namespace WpfApp1
         {
             X = x;
             Y = y;
-            verticalVelocity = _vertical;
+            verticalVelocity = _vertical = 0;
+            horizontalVelocity = _horizontal = 0;
             Size = 50;
         }
 
         //**********************************************************************************************\\
-        //                                    STATUS/PROPERTIES                                         \\
+        //                                          MEMBERS                                             \\
         //______________________________________________________________________________________________\\
 
         double _x;
         double _y;
         double _vertical;
+        double _horizontal;
 
         public double Size { get; set; }
+
+        bool isRunning = false;
+        public bool IsRunning { get => isRunning; set => isRunning = value; }
 
         //**********************************************************************************************\\
         //                                    STATUS/PROPERTIES                                         \\
@@ -65,6 +70,17 @@ namespace WpfApp1
             {
                 if (_vertical == value) return;
                 _vertical = value;
+                FirePropertyChanged();
+            }
+        }
+
+        public double horizontalVelocity
+        {
+            get => _horizontal;
+            set
+            {
+                if (_horizontal == value) return;
+                _horizontal = value;
                 FirePropertyChanged();
             }
         }

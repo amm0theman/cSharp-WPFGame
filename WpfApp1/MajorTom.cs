@@ -10,20 +10,7 @@ namespace WpfApp1
     {
         double X;
         double Y;
-        double width;
-        double height;
-
         int health;
         double mass;
-
-        public Boolean isGrounded()
-        {
-            if (Y == 0)
-            {
-                return true;
-            }
-            else
-                return false;
-        }
     }
 }
