@@ -69,6 +69,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Platform.cs" />
+    <Compile Include="PlatformVMB.cs" />
     <Compile Include="testCommand.cs" />
     <Compile Include="WindowVM.cs" />
     <Compile Include="MajorTomVMB.cs" />

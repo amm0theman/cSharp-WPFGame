@@ -26,7 +26,8 @@ namespace WpfApp1
 
             //GAMEOBJECT INITIALIZATION
             MajorToms = new ObservableCollection<MajorTomVMB>();
-            
+            Platforms = new ObservableCollection<PlatformVMB>();
+
             //PLACEMENT
             var rand = new Random();
             MajorToms.Add(new MajorTomVMB(200, 200));

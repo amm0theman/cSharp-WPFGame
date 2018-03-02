@@ -82,6 +82,10 @@ namespace WpfApp1
             {
                 if (_horizontal == value) return;
                 _horizontal = value;
+<<<<<<< HEAD
+=======
+               FirePropertyChanged();
+>>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
             }
         }
 
@@ -114,7 +118,7 @@ namespace WpfApp1
 
         public void Jump()
         {
-            if (Y <= 402 && Y >= 398)
+            if (Grounded())
             {
                 Y -= 40;
                 verticalVelocity = -1;
@@ -124,7 +128,7 @@ namespace WpfApp1
         //Status related functions
         public bool Grounded()
         {
-            if (Y == 400)
+            if (Y == 700)
             {
                 return true;
             }
@@ -138,7 +142,7 @@ namespace WpfApp1
         //Collision functions
         public bool willCollideVertical()
         {
-            if (Y + verticalVelocity <= 400)
+            if (Y + verticalVelocity <= 700)
             {
                 return false;
             }
