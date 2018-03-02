@@ -72,48 +72,102 @@ namespace WpfApp1
         {
             while (true)
             {
-                    //GET INPUTS
-                    var Tom = MajorToms[0];
+                //GET INPUTS
+                var Tom = MajorToms[0];
 
-                    if (keyDown[Key.A])
-                    {
-                        Tom.MoveLeft();
-                    }
-                    if (keyDown[Key.Space])
-                    {
-                        Tom.Jump();
-                    }
-                    if(keyDown[Key.D])
-                    {
-                        Tom.MoveRight();
-                    }
+                if (keyDown[Key.A])
+                {
+                    Tom.MoveLeft();
+                }
+                if (keyDown[Key.Space])
+                {
+                    Tom.Jump();
+                }
+                if(keyDown[Key.D])
+                {
+                    Tom.MoveRight();
+                }
 
 
-                    //_______________________________________________________
-                    //                      UPDATE                          -
-                    //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+                //_______________________________________________________
+                //                      UPDATE ME                       -
+                //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+                
+                //IF YOU SEE Y > 400 REPLACE THIS WITH Tom.isGrounded once implemented
 
-                    //IF TOM IS NOT GOING TO COLLIDE WITH ANYTHING VERTICALLY
-                    //      INCREASE VERTICAL VELOCITY
-                    //IF NOT GOING TO COLLIDE WITH ANYTHING HORIZONTALLY
-                    //      DECREASE HORIZONTAL VELOCITY
-                    //ELSE IF
-                    //      GOING TO COLLIDE VERTICAL verticalVelocity = 0
-                    //ELSE IF
-                    //      GOING TO COLLIDE HORIZONTALLY horizontalVelocity = 0
-                    if (Tom.Y + Tom.verticalVelocity + 3 <= 400 && Tom.Y < 397)
+                //Gravity
+                //IF TOM IS NOT GOING TO COLLIDE WITH ANYTHING VERTICALLY
+                //      INCREASE VERTICAL VELOCITY
+                //Friction
+                //IF NOT GOING TO COLLIDE WITH ANYTHING HORIZONTALLY AND IS NOT RUNNING
+                //      DECREASE HORIZONTAL VELOCITY
+                //ELSE IF
+                //      GOING TO COLLIDE VERTICAL verticalVelocity = 0
+                //ELSE IF
+                //      GOING TO COLLIDE HORIZONTALLY horizontalVelocity = 0
+                
+                //Gravity
+                if(!Tom.willCollideVertical())
+                {
+                    Tom.verticalVelocity += .009;
+                }
+                else
+                {
+                    Tom.verticalVelocity = 0;
+                    Tom.Y = 400; //IF ERRORS ARE HAPPENING WHEN WE START ADDING FEATURES ITS A SOLID CHANCE ITS THIS
+                }
+                //Friction
+                //if tom is running and is not going to hit anything let him continue
+                if (Tom.IsRunning && !Tom.willCollideHorizontal())
+                {
+                    //keep running
+                }
+                //if tom is running but will hit something stop him
+                if (Tom.IsRunning && Tom.willCollideHorizontal())
+                {
+                    Tom.horizontalVelocity = 0;
+                }
+                //if tom is grounded and not going to hit anything and is not running slow him down
+                if (!Tom.IsRunning && Tom.Y == 400)
+                {
+                    if(Tom.horizontalVelocity < 0)
                     {
-                        Tom.verticalVelocity += .008;
+                        Tom.horizontalVelocity += .025;
                     }
-                    else
+                    if(Tom.horizontalVelocity > 0)
                     {
-                        Tom.verticalVelocity = 0;
-                        Tom.Y = 400;
+                        Tom.horizontalVelocity -= .025;
                     }
+                }
+                //if tom is in the air and not going to hit anything and not running slow him down
+                if (!Tom.IsRunning && Tom.Y < 400)
+                {
+                    if (Tom.horizontalVelocity < 0)
+                    {
+                        Tom.horizontalVelocity += .005;
+                    }
+                    if (Tom.horizontalVelocity > 0)
+                    {
+                        Tom.horizontalVelocity -= .005;
+                    }
+                }
+                //if tom is almost stopped and not running just stop him (I hate doubles) and grounded
+                if (!Tom.IsRunning && Tom.Grounded())
+                {
+                    if (Tom.horizontalVelocity < 0.025 && Tom.horizontalVelocity > 0)
+                    {
+                        Tom.horizontalVelocity = 0;
+                    }
+                    if (Tom.horizontalVelocity > -0.025 && Tom.horizontalVelocity < 0)
+                    {
+                        Tom.horizontalVelocity = 0;
+                    }
+                }
 
-                    //Move Tom
-                    Tom.Y = Tom.Y + Tom.verticalVelocity;
-                    Tom.X = Tom.X + Tom.horizontalVelocity;
+                //Move Tom
+                Tom.Y = Tom.Y + Tom.verticalVelocity;
+                Tom.X = Tom.X + Tom.horizontalVelocity;
+
                 Thread.Sleep(1);
             }
         }
