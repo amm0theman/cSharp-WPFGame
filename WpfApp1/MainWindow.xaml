@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="525" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+        Title="MainWindow" Height="800" Width="1600" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
     <Window.DataContext>
         <local:WindowVM/>
     </Window.DataContext>
@@ -13,10 +13,25 @@
         <KeyBinding Key="Space" Command="{Binding jump}"/>
     </Window.InputBindings>
     <Canvas>
+        <Canvas.Background>
+            <ImageBrush ImageSource="Images1\map.png" Stretch="UniformToFill"/>
+        </Canvas.Background>
         <ItemsControl ItemsSource="{Binding MajorToms}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Width="{Binding Size}" Source="Images1\Rock.png">
+                    <Image Width="{Binding Size}" Source="Images1\Tom.png">
+                        <Image.RenderTransform>
+                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                        </Image.RenderTransform>
+                    </Image>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding MajorToms}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="{Binding Size}" Source="Images1\Platform.png">
                         <Image.RenderTransform>
                             <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
                         </Image.RenderTransform>
