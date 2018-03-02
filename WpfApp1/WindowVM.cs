@@ -30,7 +30,7 @@ namespace WpfApp1
 
             //PLACEMENT
             var rand = new Random();
-            MajorToms.Add(new MajorTomVMB(200, 200));
+            MajorToms.Add(new MajorTomVMB(0, 200));
 
             //COMMANDS
             jump = new testCommand(O => MajorToms[0].Jump());
@@ -115,8 +115,9 @@ namespace WpfApp1
                 else
                 {
                     Tom.verticalVelocity = 0;
-                    Tom.Y = 400; //IF ERRORS ARE HAPPENING WHEN WE START ADDING FEATURES ITS A SOLID CHANCE ITS THIS
+                    Tom.Y = 700; //IF ERRORS ARE HAPPENING WHEN WE START ADDING FEATURES ITS A SOLID CHANCE ITS THIS
                 }
+
                 //Friction
                 //if tom is running and is not going to hit anything let him continue
                 if (Tom.IsRunning && !Tom.willCollideHorizontal())
@@ -129,7 +130,11 @@ namespace WpfApp1
                     Tom.horizontalVelocity = 0;
                 }
                 //if tom is grounded and not going to hit anything and is not running slow him down
+<<<<<<< HEAD
                 if (!Tom.IsRunning && Tom.Grounded())
+=======
+                if (!Tom.IsRunning && Tom.Y == 700)
+>>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
                 {
                     if(Tom.horizontalVelocity < 0)
                     {
@@ -141,7 +146,11 @@ namespace WpfApp1
                     }
                 }
                 //if tom is in the air and not going to hit anything and not running slow him down
+<<<<<<< HEAD
                 if (!Tom.IsRunning && !Tom.Grounded())
+=======
+                if (!Tom.IsRunning && Tom.Y < 700)
+>>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
                 {
                     if (Tom.horizontalVelocity < 0)
                     {

@@ -83,6 +83,10 @@ namespace WpfApp1
                 if (_horizontal == value) return;
                 _horizontal = value;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+               FirePropertyChanged();
+>>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
 =======
                FirePropertyChanged();
 >>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
@@ -118,7 +122,11 @@ namespace WpfApp1
 
         public void Jump()
         {
+<<<<<<< HEAD
             if (Grounded())
+=======
+            if (Y <= 702 && Y >= 698)
+>>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
             {
                 Y -= 40;
                 verticalVelocity = -1;
