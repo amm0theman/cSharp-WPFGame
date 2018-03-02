@@ -60,20 +60,6 @@ namespace WpfApp1
         {
             while (true)
             {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    foreach (var key in Enum.GetValues(typeof(Key)))
-                    {
-                        try
-                        {
-                            keyDown[(Key)key] = Keyboard.IsKeyDown((Key)key);
-
-                        } catch (Exception e)
-                        {
-                            //nom nom nom...
-                        }
-                    }
-                });
                 for (int i = 0; i < MajorToms.Count; i++)
                 {
                     //For Major Tom movement
