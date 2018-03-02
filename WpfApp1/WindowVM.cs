@@ -26,8 +26,7 @@ namespace WpfApp1
 
             //GAMEOBJECT INITIALIZATION
             MajorToms = new ObservableCollection<MajorTomVMB>();
-            Platforms = new ObservableCollection<PlatformVMB>();
-
+            
             //PLACEMENT
             var rand = new Random();
             MajorToms.Add(new MajorTomVMB(0, 200));
@@ -130,11 +129,7 @@ namespace WpfApp1
                     Tom.horizontalVelocity = 0;
                 }
                 //if tom is grounded and not going to hit anything and is not running slow him down
-<<<<<<< HEAD
-                if (!Tom.IsRunning && Tom.Grounded())
-=======
                 if (!Tom.IsRunning && Tom.Y == 700)
->>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
                 {
                     if(Tom.horizontalVelocity < 0)
                     {
@@ -146,11 +141,7 @@ namespace WpfApp1
                     }
                 }
                 //if tom is in the air and not going to hit anything and not running slow him down
-<<<<<<< HEAD
-                if (!Tom.IsRunning && !Tom.Grounded())
-=======
                 if (!Tom.IsRunning && Tom.Y < 700)
->>>>>>> 7093618ae9c3f0d5b993495675c3018106c011a6
                 {
                     if (Tom.horizontalVelocity < 0)
                     {
@@ -181,6 +172,7 @@ namespace WpfApp1
                 Thread.Sleep(1);
             }
         }
+
 
         //**********************************************************************************************\\
         //                                    not sure but necessary                                    \\

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1600" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+        Title="MajorTom" Height="800" Width="1600" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
     <Window.DataContext>
         <local:WindowVM/>
     </Window.DataContext>
