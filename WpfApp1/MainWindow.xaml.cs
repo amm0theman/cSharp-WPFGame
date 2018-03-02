@@ -30,12 +30,14 @@ namespace WpfApp1
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            return;
             var dataContext = (WindowVM)DataContext;
             dataContext.KeyDown(e.Key);
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
+            return;
             var dataContext = (WindowVM)DataContext;
             dataContext.KeyUp(e.Key);
         }

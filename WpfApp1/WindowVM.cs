@@ -7,6 +7,7 @@ using System.Threading;
 using NAudio.Wave;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Windows;
 
 namespace WpfApp1
 {
@@ -59,6 +60,20 @@ namespace WpfApp1
         {
             while (true)
             {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    foreach (var key in Enum.GetValues(typeof(Key)))
+                    {
+                        try
+                        {
+                            keyDown[(Key)key] = Keyboard.IsKeyDown((Key)key);
+
+                        } catch (Exception e)
+                        {
+                            //nom nom nom...
+                        }
+                    }
+                });
                 for (int i = 0; i < MajorToms.Count; i++)
                 {
                     //For Major Tom movement
@@ -66,6 +81,7 @@ namespace WpfApp1
 
                     //USER MOVEMENT
                     if (keyDown[Key.K])
+                    //if(Keyboard.IsKeyDown(Key.K))
                     {
                         MajorToms[0].MoveLeft();
                     }
