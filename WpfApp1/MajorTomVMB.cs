@@ -68,10 +68,16 @@ namespace WpfApp1
         }
 
 
-        public void MoveLeft()
+        public void MoveRight()
         {
             X += .3;
             
+        }
+
+        public void MoveLeft()
+        {
+            X -= .3;
+
         }
 
         public void Jump()

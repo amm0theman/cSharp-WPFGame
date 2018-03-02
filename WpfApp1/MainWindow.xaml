@@ -9,10 +9,9 @@
     <Window.DataContext>
         <local:WindowVM/>
     </Window.DataContext>
-    <!-- <Window.InputBindings>
-        <KeyBinding Key="K" Command="{Binding moveLeft}"/>
+    <Window.InputBindings>
         <KeyBinding Key="Space" Command="{Binding jump}"/>
-    </Window.InputBindings> -->
+    </Window.InputBindings>
     <Canvas>
         <ItemsControl ItemsSource="{Binding MajorToms}">
             <ItemsControl.ItemTemplate>

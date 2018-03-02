@@ -27,7 +27,7 @@ namespace WpfApp1
             MajorToms.Add(new MajorTomVMB(200, 200));
 
             //moveLeft = new testCommand(O => MajorToms[0].MoveLeft());
-            //jump = new testCommand(O => MajorToms[0].Jump());
+            jump = new testCommand(O => MajorToms[0].Jump());
 
             //Dictionary Player Movements Initialization
             foreach (var key in Enum.GetValues(typeof(Key)))
@@ -66,10 +66,17 @@ namespace WpfApp1
                     var Tom = MajorToms[i];
 
                     //USER MOVEMENT
-                    if (keyDown[Key.K])
-                    //if(Keyboard.IsKeyDown(Key.K))
+                    if (keyDown[Key.A])
                     {
                         MajorToms[0].MoveLeft();
+                    }
+                    if (keyDown[Key.Space])
+                    {
+                        MajorToms[0].Jump();
+                    }
+                    if(keyDown[Key.D])
+                    {
+                        MajorToms[0].MoveRight();
                     }
                     
 
@@ -92,12 +99,6 @@ namespace WpfApp1
         }
 
         public ObservableCollection<MajorTomVMB> MajorToms { get; set; }
-        //public testCommand moveLeft { get; }
-        //public testCommand jump { get; } 
-
-       /* public void MoveLeft()
-        {
-            MajorToms[0].MoveLeft();
-        }*/
+        public testCommand jump { get; }
     }
 }

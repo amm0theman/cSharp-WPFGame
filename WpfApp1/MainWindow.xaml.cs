@@ -23,9 +23,6 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-
-            //var myMajorMang = new MajorTomVMB(200, 200);
-            //DataContext = myMajorMang;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
