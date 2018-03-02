@@ -10,7 +10,7 @@ namespace WpfApp1
 {
     public class MajorTomVMB : ViewModelBase
     { 
-
+        //Initialization of major tom boiii
         public MajorTomVMB(double x, double y)
         {
             X = x;
@@ -18,12 +18,23 @@ namespace WpfApp1
             verticalVelocity = _vertical;
             Size = 50;
         }
+
+        //**********************************************************************************************\\
+        //                                    STATUS/PROPERTIES                                         \\
+        //______________________________________________________________________________________________\\
+
         double _x;
         double _y;
         double _vertical;
 
         public double Size { get; set; }
 
+        //**********************************************************************************************\\
+        //                                    STATUS/PROPERTIES                                         \\
+        //______________________________________________________________________________________________\\
+
+
+        //POSITION PROPERTIES
         public double X
         {
             get => _x;
@@ -46,6 +57,7 @@ namespace WpfApp1
             }
         }
 
+        //PHYSICAL STATUSES
         public double verticalVelocity
         {
             get => _vertical;
@@ -57,27 +69,19 @@ namespace WpfApp1
             }
         }
 
-        public Boolean isGrounded()
-        {
-            if (Y == 0)
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+        //**********************************************************************************************\\
+        //                                      FUNCTIONS                                               \\
+        //______________________________________________________________________________________________\\
 
-
+        //Movement Related functions
         public void MoveRight()
         {
-            X += .3;
-            
+            X += .3;   
         }
 
         public void MoveLeft()
         {
             X -= .3;
-
         }
 
         public void Jump()
