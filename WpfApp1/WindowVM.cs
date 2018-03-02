@@ -128,7 +128,7 @@ namespace WpfApp1
                     Tom.horizontalVelocity = 0;
                 }
                 //if tom is grounded and not going to hit anything and is not running slow him down
-                if (!Tom.IsRunning && Tom.Y == 400)
+                if (!Tom.IsRunning && Tom.Grounded())
                 {
                     if(Tom.horizontalVelocity < 0)
                     {
@@ -140,7 +140,7 @@ namespace WpfApp1
                     }
                 }
                 //if tom is in the air and not going to hit anything and not running slow him down
-                if (!Tom.IsRunning && Tom.Y < 400)
+                if (!Tom.IsRunning && !Tom.Grounded())
                 {
                     if (Tom.horizontalVelocity < 0)
                     {
@@ -171,7 +171,6 @@ namespace WpfApp1
                 Thread.Sleep(1);
             }
         }
-
 
         //**********************************************************************************************\\
         //                                    not sure but necessary                                    \\

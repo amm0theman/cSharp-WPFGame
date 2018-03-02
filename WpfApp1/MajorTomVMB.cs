@@ -72,7 +72,6 @@ namespace WpfApp1
             {
                 if (_vertical == value) return;
                 _vertical = value;
-                FirePropertyChanged();
             }
         }
 
@@ -83,7 +82,6 @@ namespace WpfApp1
             {
                 if (_horizontal == value) return;
                 _horizontal = value;
-                FirePropertyChanged();
             }
         }
 
