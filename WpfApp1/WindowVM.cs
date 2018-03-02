@@ -12,6 +12,9 @@ namespace WpfApp1
 {
     public class WindowVM : ViewModelBase
     {
+
+        Dictionary<Key, bool> keyDown= new Dictionary<Key, bool>();
+
         public WindowVM()
         {
             //setup sound here
@@ -22,8 +25,14 @@ namespace WpfApp1
             var rand = new Random();
             MajorToms.Add(new MajorTomVMB(200, 200));
 
-            moveLeft = new testCommand(O => MajorToms[0].MoveLeft());
-            jump = new testCommand(O => MajorToms[0].Jump());
+            //moveLeft = new testCommand(O => MajorToms[0].MoveLeft());
+            //jump = new testCommand(O => MajorToms[0].Jump());
+
+            //Dictionary Player Movements Initialization
+            foreach (var key in Enum.GetValues(typeof(Key)))
+            {
+                keyDown[(Key)key] = false;
+            }
 
             //start thread
             var thread = new Thread(UpdateThread)
@@ -36,6 +45,16 @@ namespace WpfApp1
             
         }
 
+        public void KeyDown(Key k)
+        {
+            keyDown[k] = true;
+        }
+
+        public void KeyUp(Key k)
+        {
+            keyDown[k] = false;
+        }
+
         private void UpdateThread()
         {
             while (true)
@@ -45,8 +64,12 @@ namespace WpfApp1
                     //For Major Tom movement
                     var Tom = MajorToms[i];
 
-                    //Get key presses
-
+                    //USER MOVEMENT
+                    if (keyDown[Key.K])
+                    {
+                        MajorToms[0].MoveLeft();
+                    }
+                    
 
                     //If tom is not grounded and won't collide with ground this tick
                     if (Tom.Y + Tom.verticalVelocity + 3 <= 400 && Tom.Y < 397)
@@ -67,17 +90,8 @@ namespace WpfApp1
         }
 
         public ObservableCollection<MajorTomVMB> MajorToms { get; set; }
-        public testCommand moveLeft { get; }
-        public testCommand jump { get; }
-
-        private void OnKeyDownHandler(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                MajorToms[0].Y = 300;
-            }
-        }
-
+        //public testCommand moveLeft { get; }
+        //public testCommand jump { get; } 
 
        /* public void MoveLeft()
         {

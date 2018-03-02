@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="525">
+        Title="MainWindow" Height="800" Width="525" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
     <Window.DataContext>
         <local:WindowVM/>
     </Window.DataContext>
-    <Window.InputBindings>
+    <!-- <Window.InputBindings>
         <KeyBinding Key="K" Command="{Binding moveLeft}"/>
         <KeyBinding Key="Space" Command="{Binding jump}"/>
-    </Window.InputBindings>
+    </Window.InputBindings> -->
     <Canvas>
         <ItemsControl ItemsSource="{Binding MajorToms}">
             <ItemsControl.ItemTemplate>

@@ -70,13 +70,14 @@ namespace WpfApp1
 
         public void MoveLeft()
         {
-            X += 3;
+            X += .3;
+            
         }
 
         public void Jump()
         {
-            Y -= 5;
-            verticalVelocity = -2;
+            Y -= 40;
+            verticalVelocity = -1;
         }
     }
 }

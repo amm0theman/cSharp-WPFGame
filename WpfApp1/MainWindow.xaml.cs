@@ -27,5 +27,17 @@ namespace WpfApp1
             //var myMajorMang = new MajorTomVMB(200, 200);
             //DataContext = myMajorMang;
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            var dataContext = (WindowVM)DataContext;
+            dataContext.KeyDown(e.Key);
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            var dataContext = (WindowVM)DataContext;
+            dataContext.KeyUp(e.Key);
+        }
     }
 }
