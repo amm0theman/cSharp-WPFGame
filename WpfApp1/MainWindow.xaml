@@ -27,13 +27,79 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <ItemsControl ItemsSource="{Binding Platforms}">
+        <ItemsControl ItemsSource="{Binding Platforms}" Canvas.Top="738">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Width="{Binding Width}" Source="Images1\Platform.png">
                         <Image.RenderTransform>
                             <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
                         </Image.RenderTransform>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding Platform}" Canvas.Top="730">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="{Binding Width}" Source="Images1\Platform.png">
+                        <Image.LayoutTransform>
+                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                        </Image.LayoutTransform>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding Platform}" Canvas.Top="700" RenderTransformOrigin="0.874,0.543" Canvas.Left="300">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="{Binding Width}" Source="Images1\Platform.png">
+                        <Image.LayoutTransform>
+                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                        </Image.LayoutTransform>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding Platform}" Canvas.Top="670" RenderTransformOrigin="0.874,0.543" Canvas.Left="600">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="{Binding Width}" Source="Images1\Platform.png">
+                        <Image.LayoutTransform>
+                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                        </Image.LayoutTransform>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding Platform}" Canvas.Top="640" RenderTransformOrigin="0.874,0.543" Canvas.Left="900">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="{Binding Width}" Source="Images1\Platform.png">
+                        <Image.LayoutTransform>
+                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                        </Image.LayoutTransform>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding Platform}" Canvas.Top="610" RenderTransformOrigin="0.874,0.543" Canvas.Left="1200">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="{Binding Width}" Source="Images1\Platform.png">
+                        <Image.LayoutTransform>
+                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                        </Image.LayoutTransform>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding Platform}" Canvas.Top="730" RenderTransformOrigin="0.874,0.543" Canvas.Left="1400">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="{Binding Width}" Source="Images1\Platform.png">
+                        <Image.LayoutTransform>
+                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                        </Image.LayoutTransform>
                     </Image>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

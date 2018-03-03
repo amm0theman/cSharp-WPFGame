@@ -69,7 +69,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SizeObserver.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="PlatformVMB.cs" />
     <Compile Include="testCommand.cs" />

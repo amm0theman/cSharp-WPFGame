@@ -27,12 +27,16 @@ namespace WpfApp1
             //GAMEOBJECT INITIALIZATION
             MajorToms = new ObservableCollection<MajorTomVMB>();
             Platforms = new ObservableCollection<PlatformVMB>();
-            
+            Platform = new ObservableCollection<PlatformVMB>();
+            Platform.Add(new PlatformVMB(0, 0));
             //PLACEMENT
             var rand = new Random();
             Platforms.Add(new PlatformVMB(0, 728));
-            Platforms.Add(new PlatformVMB(200,800));
-            Platforms.Add(new PlatformVMB(400, 728));
+            Platforms.Add(new PlatformVMB(300, 700));
+            Platforms.Add(new PlatformVMB(600, 670));
+            Platforms.Add(new PlatformVMB(900, 640));
+            Platforms.Add(new PlatformVMB(1200, 610));
+            Platforms.Add(new PlatformVMB(1400, 730));
 
             MajorToms.Add(new MajorTomVMB(100, 0, Platforms));
             //COMMANDS6
@@ -167,7 +171,7 @@ namespace WpfApp1
                 Tom.Y = Tom.Y + Tom.verticalVelocity;
                 Tom.X = Tom.X + Tom.horizontalVelocity;
 
-                Tom.movePlat();
+
                 Thread.Sleep(1);
             }
         }
@@ -178,6 +182,7 @@ namespace WpfApp1
         //______________________________________________________________________________________________\\
         public ObservableCollection<MajorTomVMB> MajorToms { get; set; }
         public ObservableCollection<PlatformVMB> Platforms { get; set; }
+        public ObservableCollection<PlatformVMB> Platform { get; set; }
         public testCommand jump { get; }
     }
 }
