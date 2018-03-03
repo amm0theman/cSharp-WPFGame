@@ -26,12 +26,16 @@ namespace WpfApp1
 
             //GAMEOBJECT INITIALIZATION
             MajorToms = new ObservableCollection<MajorTomVMB>();
+            Platforms = new ObservableCollection<PlatformVMB>();
             
             //PLACEMENT
             var rand = new Random();
-            MajorToms.Add(new MajorTomVMB(0, 200));
+            Platforms.Add(new PlatformVMB(0, 728));
+            Platforms.Add(new PlatformVMB(200,800));
+            Platforms.Add(new PlatformVMB(400, 728));
 
-            //COMMANDS
+            MajorToms.Add(new MajorTomVMB(100, 0, Platforms));
+            //COMMANDS6
             jump = new testCommand(O => MajorToms[0].Jump());
 
             //UTILITY INITIALIZATION
@@ -111,12 +115,6 @@ namespace WpfApp1
                 {
                     Tom.verticalVelocity += .009;
                 }
-                else
-                {
-                    Tom.verticalVelocity = 0;
-                    Tom.Y = 700; //IF ERRORS ARE HAPPENING WHEN WE START ADDING FEATURES ITS A SOLID CHANCE ITS THIS
-                }
-
                 //Friction
                 //if tom is running and is not going to hit anything let him continue
                 if (Tom.IsRunning && !Tom.willCollideHorizontal())
@@ -129,7 +127,7 @@ namespace WpfApp1
                     Tom.horizontalVelocity = 0;
                 }
                 //if tom is grounded and not going to hit anything and is not running slow him down
-                if (!Tom.IsRunning && Tom.Y == 700)
+                if (!Tom.IsRunning && Tom.Grounded())
                 {
                     if(Tom.horizontalVelocity < 0)
                     {
@@ -141,7 +139,7 @@ namespace WpfApp1
                     }
                 }
                 //if tom is in the air and not going to hit anything and not running slow him down
-                if (!Tom.IsRunning && Tom.Y < 700)
+                if (!Tom.IsRunning && !Tom.Grounded())
                 {
                     if (Tom.horizontalVelocity < 0)
                     {
@@ -169,6 +167,7 @@ namespace WpfApp1
                 Tom.Y = Tom.Y + Tom.verticalVelocity;
                 Tom.X = Tom.X + Tom.horizontalVelocity;
 
+                Tom.movePlat();
                 Thread.Sleep(1);
             }
         }
@@ -178,6 +177,7 @@ namespace WpfApp1
         //                                    not sure but necessary                                    \\
         //______________________________________________________________________________________________\\
         public ObservableCollection<MajorTomVMB> MajorToms { get; set; }
+        public ObservableCollection<PlatformVMB> Platforms { get; set; }
         public testCommand jump { get; }
     }
 }

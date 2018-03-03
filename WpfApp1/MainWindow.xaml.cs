@@ -36,5 +36,6 @@ namespace WpfApp1
             var dataContext = (WindowVM)DataContext;
             dataContext.KeyUp(e.Key);
         }
+    
     }
 }

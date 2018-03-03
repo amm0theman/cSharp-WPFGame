@@ -24,19 +24,17 @@
                             <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
                         </Image.RenderTransform>
                     </Image>
-
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <ItemsControl ItemsSource="{Binding MajorToms}">
+        <ItemsControl ItemsSource="{Binding Platforms}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Width="{Binding Size}" Source="Images1\Platform.png">
+                    <Image Width="{Binding Width}" Source="Images1\Platform.png">
                         <Image.RenderTransform>
                             <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
                         </Image.RenderTransform>
                     </Image>
-
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
